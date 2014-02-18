@@ -471,3 +471,41 @@ a{
     color: rgb(130, 130, 130);
     margin: 0px;
 }
+#mobile{
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    position: absolute;
+    text-align: center;
+    display: none;
+}
+#mobile .sorry{
+    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 25%, rgba(0, 0, 0, 0.7) 75%, rgba(0, 0, 0, 0.1) 100%);
+    color: white;
+    padding: 30px 10px;
+    margin-top: 30%;
+    position: absolute;
+    z-index: 2;
+}
+#mobile .bg-cover{
+    background-color: rgba(200, 213, 221, 0.68);
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    position: absolute;
+    z-index: 1;
+}
+#mobile .bg-image{
+    background-image: url('http://farm6.staticflickr.com/5509/12530805224_7428478a2b_o.jpg');
+    background-size: cover;
+    background-position: 50% 50%;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    position: absolute;
+}
+@media (max-width: 590px){
+    #mobile{
+        display: block;
+    }
+}
