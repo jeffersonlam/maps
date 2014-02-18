@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlPz-ZPQjYceZvOJInQzWbIHB2EkRWDJY&sensor=false"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="streetviewgrabber.js"></script>
+    <script type="text/javascript" src="streetviewpoint.js"></script>
+    <script type="text/javascript" src="spin.js"></script>
+    <script type="text/javascript" src="page.js"></script>
+    <link rel="stylesheet" type="text/css" href="global.css">
+</head>
+<body>
+<div id="container">
+    <div id="home-container">
+        <div class="content-area">
+            <h1>Daytripper</h1>
+            <h4>Travel the world, simply by scrolling.</h4>
+            <button id="get-started">Try it now</button>
+            <p>Developed by Jefferson Lam</p>
+            <p>Powered by Google Maps</p>
+            <p>*Best with Google Chrome</p>
+        </div>
+    </div>
+    <div id="tutorial">
+        <h1>Scroll down to view images</h1>
+        <br>
+        <h1>v</h1>
+        <br>
+        <h1>v</h1>
+        <br>
+        <h1>v</h1>
+        <br>
+        <h1>v</h1>
+        <br>
+        <h1>v</h1>
+    </div>
+    <div id="app-container">
+        <div class="panel-with-tab">
+            <div id="panel">
+                <h3>Search</h3>
+                <div class="search-area">
+                    <form action="javascript:handleRouteSearch()" id="search">
+                        <div class="row">
+                            <label>Start: </label>
+                            <input type="text" id="start" placeholder="Grand Central Terminal" value="Guggenheim Museum, NY">
+                        </div>
+                        <div class="row">
+                            <label>End: </label>
+                            <input type="text" id="end" placeholder="Empire State Building" value="Soho, NY">
+                        </div>
+                        <div class="row submit">
+                            <input type="submit" value="Find Route">
+                        </div>
+                    </form>
+                    <div class="clear-fix"></div>
+                    <div id="searching-route"><span></span></div>
+                </div>
+                <div class="search-results-area">
+                    <div class="searchmap-container">
+                        <div id="search-map"></div>
+                    </div>
+                    <div class="clear-fix"></div>
+                    <div class="home">
+                        <button id="home-btn">Home</button>
+                    </div>
+                    <form action="javascript:handleStreetViewSearch()">
+                        <div class="row submit">
+                            <input id="street-view-button" type="submit" value="Find Street Views" disabled>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="slider-tab">
+                <div class="tab"> > </div>
+            </div>
+        </div>
+        <div class="nav-container">
+            <div id="minimap-hider"> &nbsp;&nbsp;&nbsp;> </div>
+            <div class="minimap-btn-area">
+                <button id="minimap-btn" disabled>Map</button>
+                <button id="about-btn">About</button>
+            </div>
+            <div class="clear-fix"></div>
+            <div id="minimap-container">
+                <div class="route-info">
+                    <div class="row">
+                        <label>Start: </label>
+                        <p id="origin"></p>
+                    </div>
+                    <div class="row">
+                        <label>End: </label>
+                        <p id="destination"></p>
+                    </div>
+                </div>
+                <div id="minimap"></div>
+                <button id="images-btn" disabled>View images</button>
+                <button id="panorama-btn" disabled>View panorama</button>
+            </div>
+            <div id="about-container">
+                <p class="title">about</p>
+                <p>I was playing around with Google Maps streetview one day, when I thought to myself:</p>
+                <h2>"I wish there was a way to generate a slideshow of streetview images from one place to another."</h2>
+                <p>I wanted to capture that simple joy of going on a walk, or a bike ride, or a road trip. Where it's just you and the road.</p>
+                <p>After a few weeks of fumbling around with code, here's what I came up with.</p>
+                <p>Enjoy!</p>
+                <div class="signature">
+                    <p> - Jefferson Lam</p>
+                </div>
+                <div class="notices">
+                    <p>Special thanks to Google</p>
+                    <p>Design, code, and homepage photos by Jefferson Lam</p>
+                </div>
+                <br>
+                <a href="http://www.jeffersonlam.com">My website</a><br>
+                <a href="https://github.com/jeffersonlam">Github</a><br><br>
+                <p class="muted">Last updated: February 2014</p>
+            </div>
+        </div>
+        <div id="spin"></div>
+        <div id="loading-screen">
+            <p>Loading images...</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+            </div>
+        </div>
+        <div id="loading-screen-bg">
+            <div class="cover"></div>
+        </div>
+        <div id="streetview-display">
+            <div id="blocker"></div>
+            <div id="pano-display"></div>
+        </div>
+        <div id="trackerbar">
+            <div class="line-visible"></div>
+            <div class="actual-line">
+                <div class="tracker"></div>
+            </div>
+            <div class="line-containment"></div>
+        </div>
+        <div id="streetview-images">
+            <img class="streetview" src="2.jpg">
+        </div>
+    </div>
+</div>
+</body>
+</html>
