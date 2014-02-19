@@ -100,7 +100,7 @@ body {
     margin-left: 20px;
     padding: 0 5px;
     font-size: 10pt;
-    font-family: "Open Sans";
+    /*font-family: "Open Sans";*/
 }
 .submit{
     text-align: right;
