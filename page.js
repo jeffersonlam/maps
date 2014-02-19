@@ -71,8 +71,11 @@ function handleStreetViewSearch(){
     togglePanel();
     toggleMinimap();
     toggleMinimapHider();
+    $('#images-btn').prop('disabled', true);
     $('#panorama-btn').prop('disabled', true);
     scrollDistance = 0;
+    $('#pano-display').css('display', 'none');
+    panoDisplay.setVisible(false);
 }
 
 //===========

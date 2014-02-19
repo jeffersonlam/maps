@@ -291,6 +291,13 @@ function StreetViewGrabber(){
 
     function finishLoading(){
         toggleTrackerbar();
+        if ( parseInt($('#trackerbar').css('bottom'))==-51 ){
+            $('#trackerbar').animate({
+                "bottom": "+=51"
+                }, 
+                300
+            );
+        }
         toggleScrollable();
         toggleBlocker();
         setLoadingScreenVisibility(false);

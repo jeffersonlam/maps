@@ -1,6 +1,6 @@
 html {
     height: 100% ;
-    font-family: "Open Sans";
+    font-family: "Verdana";
 }
 body { 
     position: relative;
@@ -8,7 +8,7 @@ body {
     width: 100%;
     margin: 0; 
     padding: 0; 
-    overflow-y: hidden;
+    /*overflow-y: hidden;*/
     /*background: linear-gradient(#999, #666);*/
 }
 #container{
