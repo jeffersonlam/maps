@@ -19,7 +19,7 @@ body {
 }
 #app-container{
     position: fixed;
-    top: 1080px;
+    top: 2000px;
     left: 0;
     height: auto;
     width: auto;
@@ -504,7 +504,7 @@ a{
     top: 0px;
     position: absolute;
 }
-@media (max-width: 590px){
+@media (max-width: 500px){
     #mobile{
         display: block;
     }
