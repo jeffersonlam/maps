@@ -1,3 +1,4 @@
+/*jshint -W117 */
 //page.js
 //Creates all needed JavaScript objects and reads button submissions
 
@@ -23,10 +24,12 @@ var tutorial = 0;
 //Initializes Google Maps and Directions
 function initializeSearchMap() {
     var manhattan = new google.maps.LatLng(40.756319,-73.98468);
+
     var mapOptions = {
         zoom: 11,
-        center: manhattan,
-    }
+        center: manhattan
+    };
+
     searchMap = new google.maps.Map(document.getElementById('search-map'), mapOptions);
     directionsDisplay.setMap(searchMap);
 
@@ -43,7 +46,8 @@ function initializeMiniMap() {
         center: manhattan,
         streetViewControl: false,
         mapTypeControl: false
-    }
+    };
+
     miniMap = new google.maps.Map(document.getElementById('minimap'), mapOptions);
     directionsDisplay.setMap(miniMap);
 }
@@ -117,7 +121,7 @@ $(document).ready(function() {
 
     $('#minimap-hider').on('click', function() {
         $('.nav-container').animate({
-            'right': parseInt($('.nav-container').css('right'))== -295 ? '+=295px' : '-=295px'
+            'right': parseInt($('.nav-container').css('right'), 10) === -295 ? '+=295px' : '-=295px'
             },
             300
         );
@@ -264,7 +268,7 @@ function updateMarker(currImg){
 //Toggles visibility of search panel
 function togglePanel(){
     $('.panel-with-tab').animate({
-        'left': parseInt($('.panel-with-tab').css('left'))==0 ? '-=570px' : '+=570px'
+        'left': parseInt($('.panel-with-tab').css('left'), 10) === 0 ? '-=570px' : '+=570px'
         },
         300
     );
@@ -272,13 +276,13 @@ function togglePanel(){
 
 //Toggles visibility of minimap
 function toggleMinimap(){
-    if (parseInt($('.nav-container').css('right')) == -294 ){
+    if (parseInt($('.nav-container').css('right'), 10) === -294 ){
         $('.nav-container').animate({
             'right': '+=294px'
             },
             300
         );
-    } else if ( parseInt($('.nav-container').css('right')) == 0 ){
+    } else if ( parseInt($('.nav-container').css('right'), 10) === 0 ){
         $('.nav-container').animate({
             'right': '-=294px'
             },
@@ -290,7 +294,7 @@ function toggleMinimap(){
 //Toggles visibility of landing page
 function toggleHome(){
     $('#home-container').animate({
-        'top': parseInt($('#home-container').css('top'))==0 ? '-=200%' : '+=200%'
+        'top': parseInt($('#home-container').css('top'), 10) === 0 ? '-=200%' : '+=200%'
         },
         450
     );
@@ -299,7 +303,7 @@ function toggleHome(){
 //Toggles visibility of the app
 function toggleApp(){
     $('#app-container').animate({
-        'top': parseInt($('#app-container').css('top'))==0 ? '+=200%' : '-=200%'
+        'top': parseInt($('#app-container').css('top'), 10) === 0 ? '+=200%' : '-=200%'
         },
         450
     );
@@ -307,13 +311,13 @@ function toggleApp(){
 
 //Toggles visibility of trackerbar
 function toggleTrackerbar(){
-    if (parseInt($('#trackerbar').css('bottom'))==0 ){
+    if (parseInt($('#trackerbar').css('bottom'), 10) === 0 ){
         $('#trackerbar').animate({
             'bottom': '-=50px'
             },
             300
         );
-    } else if ( parseInt($('#trackerbar').css('bottom'))==-50 ){
+    } else if ( parseInt($('#trackerbar').css('bottom'), 10) === -50 ){
         $('#trackerbar').animate({
             'bottom': '+=50px'
             },
@@ -336,7 +340,7 @@ function toggleScrollable(){
 
 function toggleMinimapHider(){
     $('#minimap-hider').animate({
-        'right': parseInt($('#minimap-hider').css('right'))==0 ? '-=50' : '+=50'
+        'right': parseInt($('#minimap-hider').css('right'), 10) === 0 ? '-=50' : '+=50'
         },
         300
     );
