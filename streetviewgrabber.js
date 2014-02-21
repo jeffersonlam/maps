@@ -68,7 +68,7 @@ function StreetViewGrabber(){
                         fadeSearchingRoute();
                         setSVButtonDisabled(true);
                         return;
-                    } 
+                    }
                     //Display route and activate button
                     directionsDisplay.setMap(searchMap);
                     directionsDisplay.setDirections(path);
@@ -153,7 +153,7 @@ function StreetViewGrabber(){
             findPanorama(pointsArray[i], i, panoArray);
         }
         findPanorama(pointsArray[pointsLength-1], i, panoArray);
-        
+
         //findPanorama()
         //==============
         //Find a single panoramic image at a point, and puts it into the specified index.
@@ -171,7 +171,7 @@ function StreetViewGrabber(){
 
     //parsePanoramaArray()
     //====================
-    //Given an array of Panorama points, remove any null or repeated 
+    //Given an array of Panorama points, remove any null or repeated
     //elements, and then creates an array of StreetViewPoints
     function parsePanoramaArray(pArray){
         trimNull(pArray);
@@ -246,7 +246,7 @@ function StreetViewGrabber(){
     //========================================
 
     function displayImages(){
-        document.getElementById("streetview-images").innerHTML = "";
+        document.getElementById('streetview-images').innerHTML = '';
         var imgTagsArray = buildImgTags(svpArray);
         loadImages(imgTagsArray);
     }
@@ -254,7 +254,7 @@ function StreetViewGrabber(){
     function buildImgTags(){
         var imgArray = [];
         for (var i = 0; i<svpArray.length; i++){
-            var img = '<img class="streetview" src="'+svpArray[i].src+'"/>';
+            var img = '<img class="streetview" src="' + svpArray[i].src + '"/>';
             imgArray[i] = img;
         }
         return imgArray;
@@ -263,10 +263,10 @@ function StreetViewGrabber(){
     function loadImages(imgArray){
         //put the img tags onto the page
         for (var i = 0; i < imgArray.length; i++){
-            document.getElementById("streetview-images").innerHTML += imgArray[i];
+            document.getElementById('streetview-images').innerHTML += imgArray[i];
         }
 
-        var imgs = $("#streetview-images > img").not(function() { return this.complete; });
+        var imgs = $('#streetview-images > img').not(function() { return this.complete; });
         var count = imgs.length;
         var total = count;
         var progress;
@@ -277,7 +277,7 @@ function StreetViewGrabber(){
                 count--;
                 progress = (total - count)/total * 100;
                 //update loading screen progress bar
-                $(".progress-bar").css('width', progress+"%");
+                $('.progress-bar').css('width', progress+'%');
                 if (!count) {
                     finishLoading();
                 }
@@ -292,8 +292,8 @@ function StreetViewGrabber(){
         toggleTrackerbar();
         if ( parseInt($('#trackerbar').css('bottom'))==-51 ){
             $('#trackerbar').animate({
-                "bottom": "+=51"
-                }, 
+                'bottom': '+=51'
+                },
                 300
             );
         }
@@ -302,8 +302,8 @@ function StreetViewGrabber(){
         setPageHeight();
         setLoadingScreenVisibility(false);
         setSpinnerVisibility(false);
-        $(".progress-bar").css('width', "0%");
-        $("#streetview-display").css("background-image", "url(" + svpArray[0].src + ")");
+        $('.progress-bar').css('width', '0%');
+        $('#streetview-display').css('background-image', 'url(' + svpArray[0].src + ')');
         $('#panorama-btn').prop('disabled', false);
         if (tutorial < 3) showTutorial();
         minimapMarker = new google.maps.Marker({
@@ -312,7 +312,7 @@ function StreetViewGrabber(){
             visible: true
         });
         //Set scrollTop to 1 and then 0 trigger the scroll event with jQuery.
-        //scrollTop quirk: If you set scrollTop to the same number it's currently at, 
+        //scrollTop quirk: If you set scrollTop to the same number it's currently at,
         //it doesn't trigger the $(document).scroll event reader
         //This line ensures that scrollTop is properly set to the top of the page
         $(document).scrollTop(1).scrollTop(0);
@@ -322,53 +322,53 @@ function StreetViewGrabber(){
     //HTML Functions for altering page elements
     //=========================================
     function setSearchingRouteVisibility(bool){
-        $("#searching-route").css('visibility', bool ? 'visible' : 'hidden');
-        $("#searching-route").css('opacity', '1');
+        $('#searching-route').css('visibility', bool ? 'visible' : 'hidden');
+        $('#searching-route').css('opacity', '1');
     }
 
     function setSearchingRouteMsg(msg){
-        $("#searching-route").html('<span>'+msg+'</span>');
+        $('#searching-route').html('<span>'+msg+'</span>');
     }
 
     function fadeSearchingRoute(){
-        $("#searching-route").delay(2000).animate({
-            "opacity": 0
-            }, 
+        $('#searching-route').delay(2000).animate({
+            'opacity': 0
+            },
             600
-        );   
+        );
     }
 
     function setLoadingScreenMsg(msg){
-        $("#loading-screen > p").html(msg);
+        $('#loading-screen > p').html(msg);
     }
 
     function setLoadingScreenVisibility(bool){
-        $("#loading-screen").css('visibility', bool ? 'visible' : 'hidden');
-        $("#loading-screen-bg").css('visibility', bool ? 'visible' : 'hidden');
+        $('#loading-screen').css('visibility', bool ? 'visible' : 'hidden');
+        $('#loading-screen-bg').css('visibility', bool ? 'visible' : 'hidden');
     }
 
     //This needs to be a separate function in the case that a streetview images are searched, but
     //no images are found. In which case, on the loading screen, only display the error msg,
     //and hide the spinner.
     function setSpinnerVisibility(bool){
-        $(".spinner").css('visibility', bool ? 'visible' : 'hidden');
+        $('.spinner').css('visibility', bool ? 'visible' : 'hidden');
     }
 
     function setSVButtonDisabled(bool){
-        $("#street-view-button").prop('disabled', bool);
+        $('#street-view-button').prop('disabled', bool);
     }
 
     function setRouteInfoDisplay(origin, destination){
-        $("#origin").html(origin);
-        $("#destination").html(destination);
+        $('#origin').html(origin);
+        $('#destination').html(destination);
     }
 
     function showTutorial(){
-        $("#tutorial").css('display', 'block');
-        $("#tutorial").css('opacity', '0');
-        $("#tutorial").delay(700).animate({
-            "opacity": 1
-            }, 
+        $('#tutorial').css('display', 'block');
+        $('#tutorial').css('opacity', '0');
+        $('#tutorial').delay(700).animate({
+            'opacity': 1
+            },
             1500
         );
     }
