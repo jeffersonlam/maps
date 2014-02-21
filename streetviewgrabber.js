@@ -184,7 +184,6 @@ function StreetViewGrabber(){
         }
         svpArray = [];
         svpArray = createStreetViewPoints(pArray);
-        setPageHeight();
         displayImages();
     }
 
@@ -300,6 +299,7 @@ function StreetViewGrabber(){
         }
         toggleScrollable();
         toggleBlocker();
+        setPageHeight();
         setLoadingScreenVisibility(false);
         setSpinnerVisibility(false);
         $(".progress-bar").css('width', "0%");
