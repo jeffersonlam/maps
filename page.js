@@ -290,18 +290,18 @@ function toggleMinimap(){
 //Toggles visibility of landing page
 function toggleHome(){
     $('#home-container').animate({
-        "top": parseInt($('#home-container').css('top'))==0 ? "-=2000" : "+=2000"
+        "top": parseInt($('#home-container').css('top'))==0 ? "-=200%" : "+=200%"
         }, 
-        400
+        450
     );
 }
 
 //Toggles visibility of the app
 function toggleApp(){
     $('#app-container').animate({
-        "top": parseInt($('#app-container').css('top'))==0 ? "+=2000" : "-=2000"
+        "top": parseInt($('#app-container').css('top'))==0 ? "+=200%" : "-=200%"
         }, 
-        400
+        450
     );
 }
 

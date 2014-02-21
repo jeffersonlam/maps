@@ -19,7 +19,7 @@ body {
 }
 #app-container{
     position: fixed;
-    top: 2000px;
+    top: 200%;
     left: 0;
     height: auto;
     width: auto;
@@ -364,6 +364,7 @@ body {
     display: none;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 75%, rgba(0, 0, 0, 0) 100%);
     padding: 7% 0% 0% 0%;
+    height: 500px;
 }
 
 #tutorial h1{
