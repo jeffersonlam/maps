@@ -1,3 +1,5 @@
+/*jshint -W117 */
+
 //streetviewgrabber.js
 
 //Class: StreetViewGrabber
@@ -15,7 +17,7 @@ function StreetViewGrabber(){
         fov: 90,
         pitch: 25,
         key: 'AIzaSyDlPz-ZPQjYceZvOJInQzWbIHB2EkRWDJY'
-    }
+    };
 
     var RADIUS = 10;
     var LIMIT = 50;
@@ -35,7 +37,7 @@ function StreetViewGrabber(){
     this.findRoute = function(origin, destination) {
         //parse form input.
         //check for blank inputs
-        if (origin.length==0 || destination.length==0){
+        if (origin.length === 0 || destination.length === 0){
             setSearchingRouteVisibility(true);
             setSearchingRouteMsg('Fields cannot be blank');
             fadeSearchingRoute();
@@ -83,11 +85,11 @@ function StreetViewGrabber(){
                 }
             });
         }, 300);
-    }
+    };
 
     this.changeRoute = function(newPath){
         path = newPath;
-    }
+    };
 
     //findStreetViews()
     //=================
@@ -95,7 +97,10 @@ function StreetViewGrabber(){
     //Changes loading screens and maps to show loading screen
     this.findStreetViews = function(){
         clearSearchForm();
-        if (minimapMarker) minimapMarker.setMap(null);
+
+        if (minimapMarker) {
+          minimapMarker.setMap(null);
+        }
 
         //set loading screen
         setLoadingScreenMsg('Loading...');
@@ -127,14 +132,14 @@ function StreetViewGrabber(){
 
         //gather all points along route
         var pointsArray = [];
-        for(var i = 0; i < path.routes[0].legs[0].steps.length; i++){
-            for (var j = 0; j < path.routes[0].legs[0].steps[i].lat_lngs.length; j++){
+        for(var i = 0, len = path.routes[0].legs[0].steps.length; i < len; i++){
+            for (var j = 0, len2 = path.routes[0].legs[0].steps[i].lat_lngs.length; j < len2; j++){
                 pointsArray.push(path.routes[0].legs[0].steps[i].lat_lngs[j]);
             }
         }
 
         buildStreetViews(pointsArray);
-    }
+    };
 
     //buildStreetViews()
     //=================
@@ -149,11 +154,6 @@ function StreetViewGrabber(){
         var increment = Math.ceil(pointsLength/panoArrayLength);
         var expectedPanoLength = Math.ceil(pointsLength/increment) + 1;
 
-        for (var i = 0; i < pointsLength; i+=increment){
-            findPanorama(pointsArray[i], i, panoArray);
-        }
-        findPanorama(pointsArray[pointsLength-1], i, panoArray);
-
         //findPanorama()
         //==============
         //Find a single panoramic image at a point, and puts it into the specified index.
@@ -167,6 +167,12 @@ function StreetViewGrabber(){
                 }
             });
         }
+
+        for (var i = 0; i < pointsLength; i+=increment){
+            findPanorama(pointsArray[i], i, panoArray);
+        }
+
+        findPanorama(pointsArray[pointsLength-1], i, panoArray);
     }
 
     //parsePanoramaArray()
@@ -177,7 +183,7 @@ function StreetViewGrabber(){
         trimNull(pArray);
         removeRepeats(pArray);
 
-        if (pArray.length == 0){
+        if (pArray.length === 0){
             setLoadingScreenMsg('No streetview images found for route');
             setSpinnerVisibility(false);
             return;
@@ -196,7 +202,9 @@ function StreetViewGrabber(){
         for (var i = 0; i<pArray.length; i++){
             var latLng = pArray[i].location.latLng;
             //If we're not on the last element, calculate new heading
-            if (pArray[i+1] != undefined) heading = getHeading(pArray[i], pArray[i+1]);
+            if (pArray[i+1] !== undefined) {
+              heading = getHeading(pArray[i], pArray[i+1]);
+            }
             var svp = new StreetViewPoint(latLng, heading, imgOptions);
             tmpArray[i] = svp;
             tmpArray[i].pano = pArray[i];
@@ -208,9 +216,9 @@ function StreetViewGrabber(){
     //==========
     //Removes null elements from an array
     function trimNull(array){
-        for(var i = 0; i<array.length; i++) {
-            if(array[i] == null) {
-                array.splice(i--, 1);
+        for(var i = 0; i < array.length; i++) {
+            if(!array[i]) {
+              array.splice(i--, 1);
             }
         }
     }
@@ -219,9 +227,9 @@ function StreetViewGrabber(){
     //===============
     //Removes repeated latLng points from an array
     function removeRepeats(array){
-        for(var i = 0; i<array.length; i++) {
+        for(var i = 0; i < array.length; i++) {
             if(array[i] && array[i+1]){
-                if(array[i].location.latLng.toString() == array[i+1].location.latLng.toString()){
+                if(array[i].location.latLng.toString() === array[i+1].location.latLng.toString()){
                     array.splice(i--, 1);
                 }
             }
@@ -290,7 +298,7 @@ function StreetViewGrabber(){
 
     function finishLoading(){
         toggleTrackerbar();
-        if ( parseInt($('#trackerbar').css('bottom'))==-51 ){
+        if ( parseInt($('#trackerbar').css('bottom'), 10) === -51 ){
             $('#trackerbar').animate({
                 'bottom': '+=51'
                 },
@@ -305,7 +313,9 @@ function StreetViewGrabber(){
         $('.progress-bar').css('width', '0%');
         $('#streetview-display').css('background-image', 'url(' + svpArray[0].src + ')');
         $('#panorama-btn').prop('disabled', false);
-        if (tutorial < 3) showTutorial();
+        if (tutorial < 3) {
+          showTutorial();
+        }
         minimapMarker = new google.maps.Marker({
             map: miniMap,
             position: svpArray[0].latLng,
@@ -382,21 +392,21 @@ function StreetViewGrabber(){
     //================================================
     this.numImages = function(){
         return svpArray.length;
-    }
+    };
 
     this.moveMarker = function(index){
         minimapMarker.setPosition(svpArray[index].latLng);
-    }
+    };
 
     this.getImg = function(index){
         return svpArray[index].src;
-    }
+    };
 
     this.getLatLng = function(index){
         return svpArray[index].latLng;
-    }
+    };
 
     this.getHeading = function(index){
         return svpArray[index].heading;
-    }
-};
+    };
+}
