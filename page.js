@@ -187,8 +187,14 @@ $(document).ready(function(){
         setPageHeight();
         if ($(window).width() <= MOBILE_WIDTH){
             mobile = true;
+            if (parseInt($('.panel-with-tab').css('left')) == -570){
+                $('.panel-with-tab').css('left', -280);
+            }
         } else {
             mobile = false;
+            if (parseInt($('.panel-with-tab').css('left')) == -280){
+                $('.panel-with-tab').css('left', -570);
+            }
         }
     });
     $('body').bind('touchmove', function(e) { 
