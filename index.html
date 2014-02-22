@@ -30,20 +30,21 @@
 </head>
 <body>
 <div id="container">
-    <div id="mobile">
+    <!-- <div id="mobile">
         <div class="sorry">
             <h1>Sorry!</h1>
             <p>Daytripper for mobile devices is still in development. Visit again on your non-mobile device!</p>
         </div>
         <div class="bg-cover"></div>
         <div class="bg-image"></div>
-    </div>
+    </div> -->
     <div id="home-container">
         <div class="content-area">
             <h1>Daytripper</h1>
             <h4>Travel the world, simply by scrolling.</h4>
+            <p class="mobile-notice">*This is the mobile beta version of Daytripper. Visit again on your non-mobile device for the best experience.</p>
             <button id="get-started">Try it now</button>
-            <p>Developed by Jefferson Lam</p>
+            <p>Developed by <a href="http://www.jeffersonlam.com">Jefferson Lam</a></p>
             <p>Powered by Google Maps</p>
             <p>Best with Google Chrome</p>
             
@@ -76,7 +77,7 @@
                             <input type="text" id="end" placeholder="Empire State Building" value="Soho, NY">
                         </div>
                         <div class="row submit">
-                            <input type="submit" value="Find Route">
+                            <input type="submit" id="find-route" value="Find Route">
                         </div>
                     </form>
                     <div class="clear-fix"></div>

@@ -176,10 +176,20 @@ var windowHeight = $(window).height();
 var scrollDistance = 0;
 var scrollPercentage;
 var numImages;
+var mobile = false;
+var MOBILE_WIDTH = 585;
 
 $(document).ready(function(){
+    if ($(window).width() <= MOBILE_WIDTH){
+        mobile = true;
+    }
     $(window).resize(function() {
         setPageHeight();
+        if ($(window).width() <= MOBILE_WIDTH){
+            mobile = true;
+        } else {
+            mobile = false;
+        }
     });
 
     $(document).scroll(function(){
@@ -263,11 +273,19 @@ function updateMarker(currImg){
 
 //Toggles visibility of search panel
 function togglePanel(){
-    $('.panel-with-tab').animate({
-        "left": parseInt($('.panel-with-tab').css('left'))==0 ? "-=570px" : "+=570px"
-        }, 
-        300
-    );
+    if (!mobile){
+        $('.panel-with-tab').animate({
+            "left": parseInt($('.panel-with-tab').css('left'))==0 ? "-=570px" : "+=570px"
+            }, 
+            300
+        );
+    } else {
+        $('.panel-with-tab').animate({
+            "left": parseInt($('.panel-with-tab').css('left'))==0 ? "-=280px" : "+=280px"
+            }, 
+            300
+        );
+    }
 }
 
 //Toggles visibility of minimap
