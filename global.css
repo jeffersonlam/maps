@@ -523,9 +523,9 @@ a{
         display: block;
     }*/
     #home-container .content-area {
-        height: 270px;
+        height: auto;
         margin-top: 50px;
-        padding-top: 30px;
+        padding: 30px 0px 20px 0px;
     }
     #home-container .content-area h1 {
         font-size: 36pt;
@@ -538,6 +538,9 @@ a{
     }
     #home-container .content-area p {
         font-size: 10.5pt;
+    }
+    #home-container .content-area .mobile-notice{
+        display: block;
     }
     .panel-with-tab #panel {
         position: relative;
@@ -646,12 +649,7 @@ a{
     #minimap{
         display: none;
     }
-    #home-container .content-area {
-        height: 325px;
-    }
-    #home-container .content-area .mobile-notice{
-        display: block;
-    }
+
     #tutorial h1{
         font-size: 16pt;
     }

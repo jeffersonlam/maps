@@ -191,6 +191,9 @@ $(document).ready(function(){
             mobile = false;
         }
     });
+    $('body').bind('touchmove', function(e) { 
+        $(document).scroll();
+    });
 
     $(document).scroll(function(){
         if (scrollable){
