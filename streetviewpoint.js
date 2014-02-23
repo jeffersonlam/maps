@@ -6,23 +6,22 @@
 //generating the source URL and latLng.
 
 function StreetViewPoint(latLng, heading, imgOptions){
-	var imgOptions = imgOptions;
 	this.latLng = latLng;
 	this.heading = heading;
 	var self = this;
 
 	function createSrc(){
-        var src = "http://maps.googleapis.com/maps/api/streetview?location="+
-                    self.latLng.toUrlValue()+
-                    "&heading="+
-                    self.heading+
-                    "&size="+
-                    imgOptions.width+"x"+imgOptions.height+
-                    "&fov="+
-                    imgOptions.fov+
-                    "&pitch="+
-                    imgOptions.pitch+
-                    "&sensor=false&key="+
+        var src = 'http://maps.googleapis.com/maps/api/streetview?location='+
+                    self.latLng.toUrlValue() +
+                    '&heading=' +
+                    self.heading +
+                    '&size=' +
+                    imgOptions.width + 'x' + imgOptions.height +
+                    '&fov=' +
+                    imgOptions.fov +
+                    '&pitch=' +
+                    imgOptions.pitch +
+                    '&sensor=false&key=' +
                     imgOptions.key;
         self.src = src;
     }
