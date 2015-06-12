@@ -8,16 +8,24 @@
 //If route is found, it will create an array of objects, containing
 //the latLng and appropriate heading.
 
-function StreetViewGrabber(){
+var StreetViewGrabber = function(options) {
     //imgOptions are the image options for generating image URLs.
-    //Requires width, height, fov, pitch, and key
     var imgOptions = {
-        width: 640,
+        width:  640,
         height: 640,
-        fov: 90,
-        pitch: 25,
-        key: 'AIzaSyDlPz-ZPQjYceZvOJInQzWbIHB2EkRWDJY'
+        fov:    90,
+        pitch:  25,
+        key:    'AIzaSyBGmssTQ26NFxp0u_JDlWjF53RKFVgrOR0'
     };
+    if (options != undefined) {
+        for (var prop in options) {
+            if (!imgOptions.hasOwnProperty(prop)) {
+                console.error('Unknown option:', prop, options[prop]);
+                return;
+            }
+            imgOptions[prop] = options[prop];
+        }
+    }
 
     var RADIUS = 10;
     var LIMIT = 50;
