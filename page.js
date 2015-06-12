@@ -17,7 +17,9 @@ var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 var directionsService = new google.maps.DirectionsService();
 
 //initialize the street view grabber
-var streetVG = new StreetViewGrabber();
+var options = { key: 'AIzaSyDlPz-ZPQjYceZvOJInQzWbIHB2EkRWDJY' };
+var streetVG = new StreetViewGrabber(options);
+// var streetVG = new StreetViewGrabber();
 var tutorial = 0;
 
 // var sanFrancisco = new google.maps.LatLng(37.774950000000004, -122.41929);
