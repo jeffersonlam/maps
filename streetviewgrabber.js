@@ -14,7 +14,7 @@ var StreetViewGrabber = function(options) {
     width:  640,
     height: 640,
     fov:    90,
-    pitch:  25,
+    pitch:  15,
     key:    'AIzaSyBGmssTQ26NFxp0u_JDlWjF53RKFVgrOR0'
   };
   if (options != undefined) {
